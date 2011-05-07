@@ -63,12 +63,12 @@ app.configure('production', function(){
 app.get('/', function(req, res){
 	
 	var posts=client.query(
-	  'SELECT * FROM '+POST,
+	  'SELECT * FROM '+POST+" ORDER BY created DESC",
 	  function selectCb(err, results, fields) {
 	    if (err) {
 	      throw err;
 	    }
-		res.render('index', {
+		res.render('posts/index', {
 		    title: 'Bejegyzések'
 			,results: results
 		  });
@@ -95,6 +95,23 @@ app.post('/post/new', function(req, res){
 	 res.redirect('/');
 });
 
+app.get('/post/:id', function(req, res){
+	 var id = req.params.id;
+	var post=client.query(
+	'SELECT * FROM '+POST+" WHERE id='"+id+"' LIMIT 1",
+	  function selectCb(err, results, fields) {
+	    if (err) {
+	      throw err;
+	    }
+		res.render('posts/show', {
+			 title: results[0].title
+			,post: results[0]
+		  });
+	    console.log(results);
+	    console.log(fields);
+	  }
+	);
+});
 // Only listen on $ node app.js
 
 if (!module.parent) {
