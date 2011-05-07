@@ -72,11 +72,24 @@ app.get('/', function(req, res){
 		  });
 	    console.log(results);
 	    console.log(fields);
-	    client.end();
 	  }
 	);
-	
-  
+});
+
+app.get('/post/new', function(req, res){
+  res.render('posts/new_post', {
+    title: 'Új bejegyzés létrehozása'
+  });
+});
+
+app.post('/post/new', function(req, res){
+	var now=new Date(); 
+	var query = client.query(
+	  'INSERT INTO '+POST+' '+
+	  'SET title = ?, text = ?, created = ?',
+	  [req.body.title, req.body.text,  now]
+	);
+	 res.redirect('/');
 });
 
 // Only listen on $ node app.js
