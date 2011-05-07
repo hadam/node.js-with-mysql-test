@@ -7,6 +7,8 @@ var express = require('express');
 
 var app = module.exports = express.createServer();
 
+var dateFormat = require('./lib/dateformat');
+
 // Mysql 
 var Client = require('mysql').Client,
     client = new Client();
@@ -83,11 +85,12 @@ app.get('/post/new', function(req, res){
 });
 
 app.post('/post/new', function(req, res){
-	var now=new Date(); 
+	var now = new Date();
+	var fnow = dateFormat(now, "isoDateTime");
 	var query = client.query(
 	  'INSERT INTO '+POST+' '+
 	  'SET title = ?, text = ?, created = ?',
-	  [req.body.title, req.body.text,  now]
+	  [req.body.title, req.body.text, fnow ]
 	);
 	 res.redirect('/');
 });
