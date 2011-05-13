@@ -111,7 +111,7 @@ app.get('/post/:id', function(req, res){
 app.get('/post/:id/edit', function(req, res){
 	 var id = req.params.id;
 	var post=client.query(
-	'SELECT * FROM '+POST+" WHERE id='"+id+"' LIMIT 1",
+	'SELECT * FROM '+POST+" WHERE id='"+id+"'",
 	  function selectCb(err, results, fields) {
 	    if (err) {
 	      throw err;
@@ -122,6 +122,17 @@ app.get('/post/:id/edit', function(req, res){
 		  });
 	  }
 	);
+});
+
+app.post('/post/:id/edit', function(req, res){
+	 var id = req.params.id;
+	var query = client.query(
+	      'UPDATE '+POST +
+	      ' SET title = ?, text = ?' +
+	      ' WHERE id='+id,
+	      [req.body.title, req.body.text ]
+	    );
+	 res.redirect('/');
 });
 // Only listen on $ node app.js
 
