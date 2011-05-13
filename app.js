@@ -31,14 +31,14 @@ var Client = require('mysql').Client,
 	client.query('USE '+DATABASE);
 	
 	//tábla létrehozása
-	//client.query(
-	//  'CREATE  TABLE '+POST+
-	// '(id INT(11) AUTO_INCREMENT, '+
-	//  'title VARCHAR(255), '+
-	//  'text TEXT, '+
-	//  'created DATETIME, '+
-	//  'PRIMARY KEY (id))'
-	//);
+//	client.query(
+//	 'CREATE  TABLE '+POST+
+//	'(id INT(11) AUTO_INCREMENT, '+
+//	  'title VARCHAR(255), '+
+//	 'text TEXT, '+
+//	  'created DATETIME, '+
+//	  'PRIMARY KEY (id))'
+//	);
 // Configuration
 
 app.configure(function(){
@@ -72,8 +72,6 @@ app.get('/', function(req, res){
 		    title: 'Bejegyzések'
 			,results: results
 		  });
-	    console.log(results);
-	    console.log(fields);
 	  }
 	);
 });
@@ -107,8 +105,21 @@ app.get('/post/:id', function(req, res){
 			 title: results[0].title
 			,post: results[0]
 		  });
-	    console.log(results);
-	    console.log(fields);
+	  }
+	);
+});
+app.get('/post/:id/edit', function(req, res){
+	 var id = req.params.id;
+	var post=client.query(
+	'SELECT * FROM '+POST+" WHERE id='"+id+"' LIMIT 1",
+	  function selectCb(err, results, fields) {
+	    if (err) {
+	      throw err;
+	    }
+		res.render('posts/edit_post', {
+			 title: results[0].title
+			,post: results[0]
+		  });
 	  }
 	);
 });

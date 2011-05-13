@@ -3,4 +3,26 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+  body
+    .headwrapper
+      .headcontent
+        h1 Node.JS Blogmotor
+      .wrapper
+        .main
+          .left_side
+            img(src: '/images/nodejs.jpg', alt: 'nodejs rocks')
+            br/
+            a(href: '/post/new') Új bejegyzés létrehozása
+            h2 Ami kellhet:
+            ul
+              li
+                a(href: 'https://github.com/visionmedia/jade/tree/master/examples') Jade Examples
+              li
+                a(href: 'http://expressjs.com/guide.html') ExpressJS Guides
+          .content!= body
+          
+
+
+
+        .clear
+        .footer

@@ -1,8 +1,120 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+img
+{
+    border:none;
 }
 
-a {
-  color: #00B7FF;
+body
+{
+    background: #fff url('../images/head_bg.jpg') repeat-x;
+    font-family:Georgia;
+    font-size:11px;
+}
+.headwrapper
+{
+    width:980px;
+    height:30px;
+    margin: 0 auto;
+}
+
+.headcontent
+{
+    width:980px;
+    margin: 0 auto;
+
+}
+
+.headcontent h1
+{
+    margin-top:8px;
+    font-family:Georgia;
+    color:white;
+    font-size:25px;
+
+}
+
+.wrapper
+{
+    width:980px;
+    margin: 0 auto;
+}
+
+.main
+{
+    width:980px;
+
+}
+
+.left_side
+{
+    width:181px;
+    float:left;
+}
+    .left_side ul{
+        padding:5px;
+    }
+
+    .left_side li
+   {
+     list-style:none;
+   }
+
+.content
+{
+    width:650px;
+    float:left;
+    margin-top:30px;
+}
+.right_side
+{
+    width:164px;
+    float:left;
+}
+
+.clear
+{
+    clear:both;
+}
+
+h4
+{
+    line-height:16px;
+    margin: 0;
+}
+.head li
+{
+    display:inline;
+    width: 120px;
+    float:left;
+
+}
+.lista li
+{
+    display:inline;
+    width: 120px;
+    float:left;
+
+}
+.lista_unread li
+{
+    display:inline;
+    width: 120px;
+    float:left;
+    font-weight:bold;
+}
+ul
+{
+    clear:both;
+}
+li a
+{
+    text-decoration:none;
+    color:black;
+}
+.form_label
+{
+    padding:5px;
+}
+.form_element
+{
+    padding:5px;
 }

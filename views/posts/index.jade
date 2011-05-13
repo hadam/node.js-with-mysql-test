@@ -1,11 +1,9 @@
 h1= title
 
-a(href: '/post/new') Új bejegyzés létrehozása
-
 - each post in results
   h2= post.title
 
-  a(href: '/post/edit/'+post.id) Bejegyzés szerkesztése
+  a(href: '/post/'+post.id+'/edit') Bejegyzés szerkesztése
 
   p= post.text
 

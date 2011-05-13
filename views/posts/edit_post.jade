@@ -1,0 +1,12 @@
+h1= title
+form(method="post", action="/post/new")
+    p
+      label(for="post[title]") Cím:
+      br/
+      input(type="text", name="title", value=post.title)
+    p
+      label(for="post[text]") Szöveg:
+      br/
+      textarea.original(name="text")= post.text
+    p    
+      input(type="submit", value="Végrehajt")
